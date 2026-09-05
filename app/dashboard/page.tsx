@@ -1,6 +1,6 @@
 import { supabaseServer } from "@/lib/supabaseServer";
 import type { ComplianceKpi } from "@/types/database";
-
+export const dynamic = "force-dynamic";
 // Server component: pulls the pre-computed KPI view (v_compliance_kpi) and
 // equipment-status view (v_equipment_status) directly — no client round-trip.
 // Port the visual layer from the design prototype
