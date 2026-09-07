@@ -2,6 +2,7 @@ import { supabaseServer } from "@/lib/supabaseServer";
 import type { ComplianceKpi } from "@/types/database";
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 // Public page — anyone can view. Only Admin (via /login) can create/edit/delete.
 export default async function DashboardPage() {
