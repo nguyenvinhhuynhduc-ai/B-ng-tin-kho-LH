@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,23 +16,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
-      <body className="min-h-screen bg-bg text-ink">
-        {children}
-
-        {/* OneSignal Web SDK — handles its own service worker + permission
-            prompt. No Firebase project or config file needed. */}
-        <Script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer strategy="afterInteractive" />
-        <Script id="onesignal-init" strategy="afterInteractive">
-          {`
-            window.OneSignalDeferred = window.OneSignalDeferred || [];
-            OneSignalDeferred.push(async function(OneSignal) {
-              await OneSignal.init({
-                appId: "${process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID}",
-              });
-            });
-          `}
-        </Script>
-      </body>
+      <body className="min-h-screen bg-bg text-ink">{children}</body>
     </html>
   );
 }
