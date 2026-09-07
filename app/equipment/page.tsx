@@ -2,6 +2,7 @@ import { supabaseServer } from "@/lib/supabaseServer";
 import AddEquipmentForm from "@/components/equipment/AddEquipmentForm";
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 export default async function EquipmentPage() {
   const db = supabaseServer();
