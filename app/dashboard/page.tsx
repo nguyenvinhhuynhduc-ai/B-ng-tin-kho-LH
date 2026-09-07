@@ -1,26 +1,10 @@
 import { supabaseServer } from "@/lib/supabaseServer";
 import type { ComplianceKpi } from "@/types/database";
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-// Server component: pulls the pre-computed KPI view (v_compliance_kpi) and
-// equipment-status view (v_equipment_status) directly — no client round-trip.
-// Port the visual layer from the design prototype
-// (see /warehouse_compliance_hub.jsx delivered alongside this project)
-// into components/dashboard/* and render it here with this live data.
+// Public page — anyone can view. Only Admin (via /login) can create/edit/delete.
 export default async function DashboardPage() {
-  const cookieStore = cookies();
-  const authClient = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-       { cookies: { get: (name: string) => cookieStore.get(name)?.value } }
-  );
-  const { data: { user } } = await authClient.auth.getUser();
-  if (!user) redirect("/login");
-
   const db = supabaseServer();
 
   const { data: kpi } = await db.from("v_compliance_kpi").select("*").single<ComplianceKpi>();
