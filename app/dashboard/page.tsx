@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export default async function DashboardPage() {
   const db = supabaseServer();
 
-  const { data: kpi } = await db.from("v_compliance_kpi").select("*").single<ComplianceKpi>();
+    const { data: kpi } = await db.from("v_compliance_kpi").select("*").maybeSingle();
   const { data: equipment } = await db
     .from("v_equipment_status")
     .select("*")
