@@ -17,7 +17,10 @@ export default async function DashboardPage() {
 
   return (
     <main className="p-4 max-w-3xl mx-auto">
-      <h1 className="font-display text-xl uppercase tracking-wide mb-4">Dashboard</h1>
+            <div className="flex items-center justify-between mb-4">
+        <h1 className="font-display text-xl uppercase tracking-wide">Dashboard</h1>
+        <a href="/equipment" className="text-accent text-sm underline">Kiểm định →</a>
+      </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         <KpiCard label="Compliance Rate" value={`${kpi?.compliance_rate ?? "--"}%`} />
