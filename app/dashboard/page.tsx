@@ -20,7 +20,8 @@ export default async function DashboardPage() {
     <main className="p-4 max-w-3xl mx-auto">
             <div className="flex items-center justify-between mb-4">
         <h1 className="font-display text-xl uppercase tracking-wide">Dashboard</h1>
-        <a href="/equipment" className="text-accent text-sm underline">Kiểm định →</a>
+                  <a href="/equipment" className="text-accent text-sm underline">Kiểm định →</a>
+          <a href="/audits" className="text-accent text-sm underline">Audit →</a>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
